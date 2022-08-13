@@ -1,111 +1,25 @@
-[project]
+[tool.poetry]
 name = "etils"
-description = "Collection of common python utils"
-readme = "README.md"
-requires-python = ">=3.7"
-license = {file = "LICENSE"}
-authors = [{name = "Conchylicultor", email="etils@google.com"}]
-classifiers = [
-    "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3 :: Only",
-    "License :: OSI Approved :: Apache Software License",
-    # Note: Python and license automatically added by some tools
-    "Intended Audience :: Developers",
-    "Intended Audience :: Science/Research",
-    "Topic :: Software Development :: Libraries :: Python Modules",
-]
-keywords = [
-    "utils", "jax", "tensorflow", "tf", "machine learning", "deep learning"
-]
-# No default dependencies (submodules deps are optional and should be
-# installed individually)
-dependencies = []
+version = "0.1.0"
+description = ""
+authors = ["Ethan Brooks <ethanabrooks@gmail.com>"]
 
-# This is set automatically by flit using `etils.__version__`
-dynamic = ["version"]
+[tool.poetry.dependencies]
+python = ">=3.7"
+importlib-resources = "^5.9.0"
+typing-extensions = "^4.3.0"
+zipp = "^3.8.1"
 
-[project.urls]
-homepage = "https://github.com/google/etils"
-repository = "https://github.com/google/etils"
-# Other: `documentation`, `changelog`
+[tool.poetry.dev-dependencies]
 
-[project.optional-dependencies]
-array-types = [
-    # Do not add anything here. `array_types` is an alias for `enp`
-    "etils[enp]",
-]
-ecolab = [
-    "jupyter",
-    "numpy",
-    "mediapy",
-    "etils[enp]",
-    "etils[epy]",
-]
-edc = [
-    "etils[epy]",
-]
-enp = [
-    "numpy",
-    "etils[epy]",
-]
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.extras]
 epath = [
     "importlib_resources",
     "typing_extensions",
     "zipp",
-    "etils[epy]",
-]
-epy = [
     "typing_extensions",
 ]
-etqdm = [
-    "absl-py",
-    "tqdm",
-    "etils[epy]",
-]
-etree = [
-    "etils[array_types]",
-    "etils[epy]",
-    "etils[enp]",
-    "etils[etqdm]",
-]
-etree-dm = [
-    "dm-tree",
-    "etils[etree]",
-]
-etree-jax = [
-    "jax[cpu]",
-    "etils[etree]",
-]
-etree-tf = [
-    "tf-nightly",
-    "etils[etree]",
-]
-lazy-imports = [
-    "etils[ecolab]",
-]
-all = [
-    "etils[array-types]",
-    "etils[ecolab]",
-    "etils[edc]",
-    "etils[enp]",
-    "etils[epath]",
-    "etils[epy]",
-    "etils[etqdm]",
-    "etils[etree]",
-    "etils[etree-dm]",
-    "etils[etree-jax]",
-    "etils[etree-tf]",
-]
-
-dev = [
-    "pytest",
-    "pytest-subtests",
-    "pytest-xdist",
-    "pylint>=2.6.0",
-    "yapf",
-    "chex",
-]
-
-[build-system]
-requires = ["flit_core >=3.5,<4"]
-build-backend = "flit_core.buildapi"
